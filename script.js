@@ -1,144 +1,49 @@
-/* Estilos globais */
-*{
-    font-family: helvetica;
-    margin: 0;
-    padding: 0;
-}
+const backToTop = document.querySelector(".back-to-top")
+const elements = document.querySelectorAll("nav a")
 
-/* Corpo da página */
-body{
-    padding-bottom: 800px;
-}
 
-/* Barra de navegação */
-nav{
-    background-color: #333;
-}
-
-/* Lista de itens da barra de navegação */
-nav ul{
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding: 1rem 1rem;
-}
-
-/* Itens de navegação */
-nav ul a{
-    color: white;
-    text-shadow: 0 0 4px rgb(158, 158, 158);
-    text-decoration: none;
-    padding: 15px;
-    transition: .4s;
-}
-
-/* Estado de hover dos itens de navegação */
-nav ul a:hover{
-    background-color: #222;
-}
-
-/* Submenus de navegação */
-nav ul ul{
-    display: none;
-    position: absolute;
-    width: 100px;
-    top: 50px;
-    background-color: #444;
-    padding: 0rem;
-    font-size: .8rem;
-}
-
-/* Itens de navegação nos submenus */
-nav ul ul li a{
-    padding: 0.5rem;
-    display: block;
-}
-
-/* Lista de itens nos submenus */
-nav ul ul li{
-    position: relative;
-}
-
-/* Submenus aninhados */
-nav ul ul ul{
-    left: 100px;
-    top: 0;
-    background-color: #555;
-}
-
-/* Exibir submenus quando o item pai é hover */
-nav ul li:hover > ul{
-    display: block;
-}
-
-/* Botão "voltar ao topo" */
-.back-to-top{
-    display: block;
-    background-color: #222;
-    color: white;
-    text-shadow: 0 0 2px rgb(158, 158, 158);
-    padding:  .6rem;
-    border: 1px solid black;
-    border-radius: 5px;
-    bottom: 20px;
-    right: 20px;
-    position: fixed;
-
-}
-
-/* Estilos de botão */
-.btn{
-    text-align: center;
-    justify-content: center ;
-}
-
-.content{
-    margin-left:  30px;
-    display: flex;
-    flex-direction: column;
-    gap: 800px;
-    font-size: 1.4rem;
-}
-.ProdutoTitle{
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 800px;
-}
-.produto{
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 800px;
-}
-
-@media (max-width: 380px ) {
-    nav ul a{
-        font-size: .7rem;
-
+window.addEventListener("scroll", () =>{
+    const scrollTop = document.documentElement.scrollTop || window.pageYOffset // para navegadores mais velhos
+    console.log(scrollTop)
+    if (scrollTop > 300){
+        backToTop.style.display = "block"
     }
-    .content{
-        font-size: 1rem;
+    else{
+        backToTop.style.display = "none"
+    }
+})
 
-    }
-    nav ul ul{
-        width: 80px;
-    }
-    nav ul ul ul{
-        left: 80px;
-    }
-    nav ul ul a{
-        font-size: .5rem;
-        padding: 0;
+backToTop.addEventListener("click", ()=>{
+   window.scrollTo({top: 0, behavior:"smooth"})
+})
 
-    }
-    nav ul ul ul a{
-        font-size: .6rem;
-
-    }
-    h1{
-        font-size: 1.5rem;
-    
-    }
-
-}
+elements.forEach(drop =>{
+        drop.addEventListener("click", function(e){
+            e.preventDefault()
+            const element = this.textContent
+            if (element === "Home"){
+                window.scrollTo({top: 0, behavior:"smooth"})
+            }
+            if (element === "Sobre"){
+                window.scrollTo({top: 870, behavior:"smooth"})
+            }
+            if (element === "Produto"){
+                window.scrollTo({top: 1730, behavior:"smooth"})
+            }
+            if (element === "Produto 1"){
+                window.scrollTo({top: 2590, behavior:"smooth"})
+            }
+            if (element === "Produto 2"){
+                window.scrollTo({top: 3450, behavior:"smooth"})
+            }
+            if (element === "Subproduto 1"){
+                window.scrollTo({top: 4275, behavior:"smooth"})
+            }
+            if (element === "Subproduto 2"){
+                window.scrollTo({top: 5100, behavior:"smooth"})
+            }
+            if (element === "Contato"){
+                window.scrollTo({top: 5930, behavior:"smooth"})
+            }
+        })
+})
